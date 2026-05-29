@@ -1,0 +1,8 @@
+1. SUBPROBLEM
+dp[i] : number of ordered ways to construt the sum 'i'
+
+2. RECURSIVE FORMULA
+
+dp[j] = {
+    sum(dp[j-coins[i]]), i=0...N && j=coins[i]...X 
+}

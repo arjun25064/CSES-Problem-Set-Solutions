@@ -1,0 +1,26 @@
+1. SUBPROBLEM 
+    coins = [c_1,c_2,...,c_n]
+    dp[i] : number of ways to construct the sum 'i'
+
+2. RECURSIVE FORMULA
+    dp[i] = {
+        1, i=0
+        sum(dp[i-c_j]) , for j=1,2,...,n
+    }
+
+3. MEMO STRUCTURE
+init dp[x+1] array to 0 , where we need to find
+number of ways to find sum 'x'
+
+4. FILLING MEMO
+left to right 
+
+5. SOLVING PROBLEM 
+dp[x]
+
+6. TIME AND SPACE
+TC: O()
+
+7. CODE 
+
+for i = 1 ... 

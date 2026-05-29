@@ -1,0 +1,28 @@
+1. SUBPROBLEM
+
+dp[n] : min number of steps to reach n->0
+
+2. RECURSIVE FORMULA
+dp[i] = {
+	0, i=0
+	min(1+dp[i-j]), for all j , where j is some digit of in the number i
+	} 
+3. MEMO STRUCTURE
+1D dp array of size n+1
+
+4. FILLING MEMO
+left to right
+
+5. TIME AND SPACE
+TC : O(N)
+SC : O(N)
+
+6. CODE
+
+init dp[n+1] to 0
+
+for i = 1 to n :
+    for j in [d_1,d_2,...d_k]: // where d_y is yth digit in integer i 
+        dp[i] = min(dp[i], 1 + dp[i-j]) 
+
+return dp[n]

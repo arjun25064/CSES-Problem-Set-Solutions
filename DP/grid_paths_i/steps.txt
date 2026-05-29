@@ -1,0 +1,67 @@
+1. SUBPROBLEM 
+dp[i][j] = number of ways to reach the cell (i,j)
+
+2. RECURSIVE FORMULA
+
+dp[i][j] = {
+	0, if cell(i,j) = *
+	dp[i][j-1], i=0 && cell(i=0,j) = .
+	dp[i-1][j], j=0 && cell(i,j=0) = .
+	else
+	dp[i-1][j] + dp[i][j-1]  
+}
+
+3. MEMO STRUCTURE
+2D n*n dp array
+
+4. FILLING MEMO
+left to right, bottom to top
+
+5. TIME AND SPACE 
+TC : O(N^2)
+SC : O(N^2)
+
+6. CODE
+init dp[n+1][n+1] to 0
+dp[0][0] = 1 , if cell(0,0) = .
+for j=1 .. n:
+	if cell(0,j) = * :
+		dp[0][j] = 0
+	else 
+		dp[0][j] = dp[0][j-1]
+	if cell (j,0) = * :
+		dp[j][0] = 0
+	else 
+		dp[j][0] = dp[j-1][0]
+
+for i=1..n:
+	for j=1..n:
+		if cell (i,j) = *
+			dp[i][j]=0
+		else 
+			dp[i][j]=dp[i-1][j]+dp[i][j-1]
+return dp[n][n]
+
+7. OPTIMIZATION
+
+dp[i][j] depends in dp[i-1][j] (previous row,same column) and dp[i][j-1] (same row, previous column)
+
+init prev[n+1]=0
+for j=0 .. n:
+	if cell(0,j) = *:
+		prev[j] = 0
+	else 
+		prev[j] = prev[j-1]
+
+for i=1 .. n:
+	curr = [] // n+1-sized initialized to 0, represents current row
+	curr[0] = 0 if cell(i,0) = * else curr[0] = prev[0]
+	for j = 1 .. n:
+		if cell (i,j) = *
+			curr[j]=0
+		else
+			curr[j]=prev[j]+curr[j-1]
+            
+	prev = curr
+
+return prev[n-1]	 

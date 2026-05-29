@@ -1,0 +1,4 @@
+# Ignore compiled/build files
+*.exe
+*.o
+*.pyc

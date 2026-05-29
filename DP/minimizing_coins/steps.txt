@@ -1,0 +1,35 @@
+1. SUBPROBLEM 
+coins denomination : [c_1,c_2,...,c_n]
+dp[c] : minimum coins to make the amount 'c'
+
+2. RECURSIVE FORMULA
+dp[i] = {
+        0, if i=0 , 
+        else 
+        min(
+            1 + dp[i - c_j] given that i - c_j >= 0
+        ) for all j = 1,2,...n
+}
+
+3. MEMO STRUCTURE
+Initialize an array dp[n+1] all to some maximum value 
+
+4. FILLING MEMO 
+
+5. SOLVING PROBLEM 
+
+Get dp[n]
+
+6. TIME AND SPACE 
+TC: O(n)
+SC: O(n)
+
+7. CODE
+
+coins = [c_1,c_2,...,c_n]
+init dp[n+1]
+for i = 1 ... n:
+    for c in coins:
+        if i - c >= 0
+            dp[i] = min(dp[i], 1 + dp[i-c])
+return dp[n]
